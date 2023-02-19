@@ -22,7 +22,7 @@ fofa和google的功能改写自水泽子域名扫描器。
 ## 使用：
 
 ```python
-python3 subdomain_collector.py -d iculture.cc -o result.txt
+python3 subdomain_collector.py -d {domain} -o result.txt
 ```
 
 执行的命令如下
