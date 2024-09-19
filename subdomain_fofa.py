@@ -8,14 +8,14 @@ import requests
 import base64
 import json
 
-email = ""
-key = ""
+email = "616634647@qq.com"
+key = "cd379ca375a49aaf366c1ec867c4d20c"
 size = 1000
 page = 1
 headers = {'user-agent': 'Mozilla/5.0 (Windows NT 6.1; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/50.0.2661.102 Safari/537.36'}
 
 def subdomain_fofa(query_str):
-    fofa_web_host_port = []  
+    fofa_web_host_port = []
     fofa_service_host_port = []     #
 
     qbase64 = str(base64.b64encode(query_str.encode(encoding='utf-8')), 'utf-8')
@@ -51,8 +51,11 @@ def subdomain_clean(hosts):
     subdomains=[]
     for i in hosts:
         if "http" in i:
-            a=i.split('//')[1]
-            subdomains.append(a)
+            if '//' in  i:
+                a=i.split('//')[1]
+                subdomains.append(a)
+            else:
+                subdomains.append(i)
         else:
             subdomains.append(i)
     return subdomains
@@ -69,7 +72,9 @@ if __name__ == '__main__':
     else:
         domain =options.domain
 
+    # domain='baidu.com'
     subdomains = subdomain_fofa('domain="{}"'.format(domain))
+
     # print(subdomains)
 
     def Deduplication(lst1):
@@ -86,6 +91,5 @@ if __name__ == '__main__':
 
 
     fo.close()
-
 
 
